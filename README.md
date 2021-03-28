@@ -4,7 +4,7 @@ Este repositorio se ha creado para el examen técnico de Freddy Muro G. a petici
 
 Consideraciones:
 
-* El sistema se encuentra desplegado en [heroku](https://testimportcontact.herokuapp.com/)
+* El sistema se encuentra desplegado en [heroku](https://examenkoombea.herokuapp.com/)
  * primer usuario: usuario1@test.com/123123
  * segundo usuario: usuario2@test.com/123123
 
