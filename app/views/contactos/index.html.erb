@@ -42,7 +42,7 @@
                     <% @contactos.each do |contacto| %>
                       <td><%= contacto.carga.archivo %></td>
                       <td><%= contacto.nombre %></td>
-                      <td><%= contacto.nacimiento.nil? ? "" : l(contacto.nacimiento, format: '%Y %B %d') %></td>
+                      <td><%= contacto.nacimiento.nil? ? "Fecha inválida" : l(contacto.nacimiento, format: '%Y %B %d') %></td>
                       <td><%= contacto.telefono %></td>
                       <td><%= contacto.direccion %></td>
                       <td><%= contacto.desencripta_tarjeta %></td>
