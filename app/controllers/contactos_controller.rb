@@ -13,7 +13,7 @@ class ContactosController < ApplicationController
 
     if !from_page.blank? && from_page == 'carga' && !carga.blank?
       @carga = Carga.find(carga)
-      q_estado = " and ca.id = #{carga}"
+      q_carga = " and ca.id = #{carga}"
     end
 
     if !from_page.blank? && from_page == 'carga' && !estado.blank?
@@ -28,6 +28,7 @@ class ContactosController < ApplicationController
                         and ca.user_id = #{current_user.id}
                         #{q_carga}
                         #{q_estado}
+                        order by cc.id desc
                         ").paginate(page: params[:page], per_page: 10)
   end
 
