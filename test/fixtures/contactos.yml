@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  carga: one
+  nombre: MyString
+  nacimiento: 2021-03-27
+  telefono: MyString
+  direccion: MyString
+  tarjeta: MyString
+  franquicia: MyString
+  email: MyString
+
+two:
+  carga: two
+  nombre: MyString
+  nacimiento: 2021-03-27
+  telefono: MyString
+  direccion: MyString
+  tarjeta: MyString
+  franquicia: MyString
+  email: MyString

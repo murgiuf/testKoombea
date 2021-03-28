@@ -1,0 +1,25 @@
+<%= form_with(model: carga, local: true) do |form| %>
+  <% if carga.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(carga.errors.count, "error") %> prohibited this carga from being saved:</h2>
+
+      <ul>
+      <% carga.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div  class="form-group">
+    <%= form.label :archivo %>
+    <%= file_field_tag :file, class: 'form-control-file', required: true %>
+  </div>
+
+
+
+  <div class="actions">
+    <%= form.submit "Cargar", :class => "btn btn-primary" %>
+  </div>
+<% end %>

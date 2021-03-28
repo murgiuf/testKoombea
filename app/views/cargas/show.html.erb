@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @carga.user %>
+</p>
+
+<p>
+  <strong>Archivo:</strong>
+  <%= @carga.archivo %>
+</p>
+
+<p>
+  <strong>Estado:</strong>
+  <%= @carga.estado %>
+</p>
+
+<%= link_to 'Edit', edit_carga_path(@carga) %> |
+<%= link_to 'Back', cargas_path %>

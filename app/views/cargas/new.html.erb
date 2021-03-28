@@ -1,0 +1,47 @@
+
+
+<!-- Content Header (Page header) -->
+<section class="content-header">
+  <h1>
+    Carga de Contactos
+  </h1>
+</section>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+          <li class="active">
+            <a href="#barrera" data-toggle="tab">Nueva Carga</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="active tab-pane" id="carga">
+
+            <h4>Orden de Mapeo</h4>
+            <%= render "mapeo" %>
+
+            <%= form_tag import_carga_path, multipart: true do %>
+            <%= label :file, "Cargar Contactos CSV" %>
+            <%= file_field_tag :file, class: 'form-control-file', required: true %>
+            <br>
+            <strong>Omitir Cabeceras</strong>
+            <%= check_box_tag :cabecera, "si", true %>
+            <br><br>
+            <%= submit_tag "Importar Contactos ", class: 'btn btn-primary' %>
+            <%= link_to 'Regresar', contactos_path, :class => "btn btn-primary" %>
+
+            <% end %>
+
+
+
+          </div>
+          <!-- /.tab-pane -->
+        </div>
+        <!-- /.tab-content -->
+      </div>
+      <!-- /.nav-tabs-custom -->
+    </div>
+  </div>
+</section>

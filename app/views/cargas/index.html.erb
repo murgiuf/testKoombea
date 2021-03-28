@@ -1,0 +1,61 @@
+<p id="notice"><%= notice %></p>
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="nav-tabs-custom">
+
+        <div class="tab-content">
+          <div id="barreras" class="tab-pane fade in <%= 'active' if params[:active_tab].nil? %>">
+            <div class="panel-heading">
+              <h1>Cargas
+              </h1>
+            </div>
+            <div class="panel-body">
+              <br>
+              <br>
+              <% if @cargas.size == 0 %>
+                <h4>Sin cargadas realizadas</h4>
+              <% else %>
+                <%= will_paginate :previous_label => "Anterior",:next_label => "Siguiente" %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>#</th>
+                      <th>Archivo</th>
+                      <th>Fecha</th>
+                      <th>Registros total</th>
+                      <th>Registros cargados</th>
+                      <th>Registros rechazados</th>
+                      <th>Estado</th>
+                      <th colspan="2"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @cargas.each do |carga| %>
+                      <td><%= carga.id %></td>
+                      <td><%= link_to "#{carga.nombre_archivo}", descarga_archivo_path(id: carga.id) %></td>
+
+                      <td><%= carga.created_at.strftime('%Y/%m/%d - %H:%M:%S') %></td>
+                      <td><%= carga.total %></td>
+                      <td><%= link_to carga.cargado, contactos_path(from_page: 'carga', carga_id: carga.id, estado: 1) %></td>
+                      <td><%= link_to carga.rechazado , contactos_path(from_page: 'carga', carga_id: carga.id, estado: 0) %></td>
+                      <td><%= carga.estado_str %></td>
+                    </tbody>
+                    <% end %>
+                  </table>
+                  <%= will_paginate :previous_label => "Anterior",:next_label => "Siguiente" %>
+                <% end %>
+
+
+                  <%= link_to 'Nueva carga', new_carga_path, :class => "btn btn-primary" %>
+              </div>
+            </div>
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+      </div>
+    </div>
+  </section>

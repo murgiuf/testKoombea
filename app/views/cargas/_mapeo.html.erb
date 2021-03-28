@@ -1,0 +1,41 @@
+
+<table id="mitabla" class="table">
+    <% @mapeos.each do |mapeo| %>
+    <tr>
+      <td><%= mapeo.columna %></td>
+      <td><input type="button"  value="arriba" class="move up" mapeo_id="<%= mapeo.id%>"/>
+      </td>
+     <td><input type="button" value="abajo" class="move down" mapeo_id="<%= mapeo.id%>"/>
+     </td>
+    </tr>
+    <% end %>
+  </table>
+
+<script>
+  $('#mitabla input.move').click(function() {
+      var row = $(this).closest('tr');
+      var mi_mov = 0;
+      if ($(this).hasClass('up')) {
+          row.prev().before(row);
+          mi_mov = -1
+      }
+      else {
+          row.next().after(row);
+          mi_mov = +1
+
+      }
+
+      $.ajax({
+                  url: "/modificaMapeo",
+                  dataType: "json",
+                  data: {
+                    mapeo_id: $(this).attr("mapeo_id"),
+                    mov: mi_mov
+                  },
+                  success: function(data) {
+                    console.log(data);
+                  }
+                });
+
+  });
+</script>

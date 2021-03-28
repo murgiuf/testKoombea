@@ -1,0 +1,71 @@
+<p id="notice"><%= notice %></p>
+
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="nav-tabs-custom">
+
+        <div class="tab-content">
+          <div id="barreras" class="tab-pane fade in <%= 'active' if params[:active_tab].nil? %>">
+            <div class="panel-heading">
+              <h1>Contactos
+              </h1>
+            </div>
+            <div class="panel-body">
+              <% if !params[:from_page].blank? && params[:from_page] == "carga" %>
+                <h4>Mostrando registros de la carga <%= @carga.nombre_archivo%></h4>
+                <h4>Con estado <%= @estado%></h4>
+              <% end %>
+
+              <br>
+              <% if @contactos.size == 0 %>
+                <h4>Sin contactos cargados</h4>
+              <% else %>
+                <%= will_paginate :previous_label => "Anterior",:next_label => "Siguiente" %>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>Carga</th>
+                      <th>Nombre</th>
+                      <th>Nacimiento</th>
+                      <th>Telefono</th>
+                      <th>Direccion</th>
+                      <th>Tarjeta</th>
+                      <th>Franquicia</th>
+                      <th>Email</th>
+                      <th colspan="2"></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% @contactos.each do |contacto| %>
+                      <td><%= contacto.carga.archivo %></td>
+                      <td><%= contacto.nombre %></td>
+                      <td><%= contacto.nacimiento.nil? ? "" : l(contacto.nacimiento, format: '%Y %B %d') %></td>
+                      <td><%= contacto.telefono %></td>
+                      <td><%= contacto.direccion %></td>
+                      <td><%= contacto.desencripta_tarjeta %></td>
+                      <td><%= contacto.franquicia %></td>
+                      <td><%= contacto.email %></td>
+                    </tbody>
+                    <% end %>
+                  </table>
+                  <%= will_paginate :previous_label => "Anterior",:next_label => "Siguiente" %>
+                <% end %>
+
+
+              <%= link_to 'Importar contactos', new_carga_path, :class => "btn btn-primary" %>
+              <% if !params[:from_page].blank? && params[:from_page] == "carga" %>
+                <%= link_to 'Regresar', cargas_path, :class => "btn btn-primary" %>
+              <% end %>
+              </div>
+            </div>
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div>
+        <!-- /.nav-tabs-custom -->
+      </div>
+    </div>
+  </section>
